@@ -51,6 +51,7 @@
         android:id="@+id/dottedMenu"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:padding="4dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/dottedmenue"
         app:layout_constraintEnd_toEndOf="parent"
