@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!!!</string>
+    <string name="avater">avater</string>
+    <string name="dottedmenue">dottedMenue</string>
+    <string name="author">Some very-very long header with ellipsize feature</string>
+    <string name="some_nice_text">Some nice text</string>
+    <string name="likesIcon">LikesIcon</string>
+    <string name="likesCounter">1000</string>
+    <string name="shareIcon">ShareIcon</string>
+    <string name="sharedCounter">1000</string>
+    <string name="viewsCounter">1000</string>
+    <string name="viewsIcon">ViewsIcon</string>
 </resources>

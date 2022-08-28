@@ -2,4 +2,14 @@
 <resources>
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа!!!</string>
+    <string name="avater">аватар</string>
+    <string name="dottedmenue">меню3точки</string>
+    <string name="author">Длинный-длинный заголовок с \"отрезательной\" фичей</string>
+    <string name="some_nice_text">Some nice text</string>
+    <string name="likesIcon">LikesIcon</string>
+    <string name="sharedCounter">1000</string>
+    <string name="viewsIcon">ViewsIcon</string>
+    <string name="viewsCounter">1000</string>
+    <string name="likesCounter">1k</string>
+    <string name="shareIcon">ShareIcon</string>
 </resources>
