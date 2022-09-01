@@ -112,12 +112,12 @@
         android:gravity="center_vertical"
         android:text="@string/viewsCounter"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sharesIcon"
-        app:layout_constraintStart_toEndOf="@+id/sharesIcon"
-        app:layout_constraintTop_toTopOf="@+id/sharesIcon" />
+        app:layout_constraintBottom_toBottomOf="@+id/sharesButton"
+        app:layout_constraintStart_toEndOf="@+id/sharesButton"
+        app:layout_constraintTop_toTopOf="@+id/sharesButton" />
 
     <ImageView
-        android:id="@+id/sharesIcon"
+        android:id="@+id/sharesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/shareIcon"
@@ -152,7 +152,7 @@
         android:layout_height="wrap_content"
         app:barrierDirection="top"
         android:layout_marginBottom="@dimen/pad16dp"
-        app:constraint_referenced_ids="likesButton,likesCount,sharesIcon,sharesCount,viewedIcon" />
+        app:constraint_referenced_ids="likesButton,likesCount,sharesButton,sharesCount,viewedIcon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
