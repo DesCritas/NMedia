@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             result = (count/1_000_000).toDouble().toString().substring(0,3) + "M"
         }
+
         return result
     }
 }
