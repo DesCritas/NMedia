@@ -2,8 +2,9 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,45 +12,37 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        val post = Post(
-            author = "Нетология. Университет интернет-профессий будущего",
-            authorAvatar =  "",
-            published = "21 мая в 18:36",
-            content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
-            likesCount = 999,
-            sharesCount = 999_999,
-            viewsCount = 999_999
-        )
-        with(binding){
-            postText.text = post.content
-            published.text = post.published
-            author.text = post.author
-            likesCount.text = counterToText(post.likesCount)
-            sharesCount.text = counterToText(post.sharesCount)
-            viewedCount.text = counterToText(post.viewsCount)
-            likesButton.setOnClickListener {
-                post.likedByMe = !post.likedByMe
-                likesButton.setImageResource(
-                    if(post.likedByMe){
-                        R.drawable.ic_liked
-                    } else {
-                        R.drawable.ic_like
-                    }
-                )
-                if(post.likedByMe){
-                    post.likesCount++
-                } else {
-                    post.likesCount--
-                }
+        val viewModel by viewModels<PostViewModel>()
+        viewModel.data.observe(this){ post ->
+            with(binding){
+                postText.text = post.content
+                published.text = post.published
+                author.text = post.author
                 likesCount.text = counterToText(post.likesCount)
-            }
-            sharesButton.setOnClickListener {
-                post.sharesCount =  post.sharesCount + 100000
-                //post.sharesCount++
                 sharesCount.text = counterToText(post.sharesCount)
+                viewedCount.text = counterToText(post.viewsCount)
+                val likeImage = if(post.likedByMe){
+                    R.drawable.ic_liked
+                } else {
+                    R.drawable.ic_like
+                }
+                likesButton.setImageResource(likeImage)
+                likesCount.text = counterToText(post.likesCount)
+                sharesCount.text = counterToText(post.sharesCount)
+
+
+
+            }
+            binding.likesButton.setOnClickListener {
+                viewModel.like()
+            }
+            binding.sharesButton.setOnClickListener{
+                viewModel.share()
             }
         }
+
+
+
 
 
 
@@ -84,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             result = (count/1_000_000).toDouble().toString().substring(0,3) + "M"
         }
+
         return result
     }
 }
