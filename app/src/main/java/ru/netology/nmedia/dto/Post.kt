@@ -10,7 +10,4 @@ data class Post(
     val likesCount: Long,
     val sharesCount: Long,
     val viewsCount: Long
-) {
-
-
-}
+)
