@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = PostAdapter()
         binding.container.adapter = adapter
         viewModel.data.observe(this) { posts ->
-            adapter.list = posts
+            adapter.submitList(posts)
 
         }
 
