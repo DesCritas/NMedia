@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel by viewModels<PostViewModel>()
         val adapter = PostAdapter(
-            object : PostEventListener{
+            object : PostEventListener {
                 override fun onEdit(post: Post) {
                     viewModel.edit(post)
                 }
@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        viewModel.edited.observe(this){edited->
-            if (edited.id == 0L){
+        viewModel.edited.observe(this) { post ->
+            if (post.id == 0L) {
                 return@observe
             } else {
-                binding.contentEdit.setText(edited.content)
+                binding.contentEdit.setText(post.content)
                 binding.contentEdit.requestFocus()
             }
         }
@@ -56,28 +56,22 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-       //adapter.onLikeListener = {
-       //    viewModel.likeById(it.id)
-       //}
-       //adapter.onShareListener = {
-       //    viewModel.shareById(it.id)
-       //}
-       //adapter.onRemoveListener = {
-       //    viewModel.removeById(it.id)
-       //}
-
-        binding.save.setOnClickListener{
-            if(binding.contentEdit.text.isNullOrBlank()){
-                Toast.makeText(it.context, "Post is blank", Toast.LENGTH_SHORT).show()
+        binding.save.setOnClickListener {
+            if (binding.contentEdit.text.isNullOrBlank()) {
+                Toast.makeText(
+                    it.context,
+                    "Post is blank",
+                    Toast.LENGTH_SHORT
+                ).show()
                 return@setOnClickListener
-            } else{
+            } else {
                 val text = binding.contentEdit.text.toString()
                 viewModel.editContent(text)
                 viewModel.save()
-
+                binding.contentEdit.setText("")
                 binding.contentEdit.clearFocus()
                 AndroidUtils.hideKeyboard(binding.contentEdit)
-                binding.contentEdit.setText("")
+
             }
         }
 

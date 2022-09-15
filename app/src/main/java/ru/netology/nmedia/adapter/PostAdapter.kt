@@ -10,7 +10,7 @@ import ru.netology.nmedia.databinding.PostCardBinding
 import ru.netology.nmedia.services.PostDiffUtil
 import ru.netology.nmedia.dto.Post as Post
 
-interface PostEventListener{
+interface PostEventListener {
     fun onEdit(post: Post)
     fun onShare(post: Post)
     fun onRemove(post: Post)
@@ -18,12 +18,9 @@ interface PostEventListener{
 }
 
 
-class PostAdapter (
+class PostAdapter(
     private val listener: PostEventListener
-        ): ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffUtil()) {
-
-
-
+) : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffUtil()) {
 
     inner class PostViewHolder(
         private val binding: PostCardBinding,
@@ -55,7 +52,7 @@ class PostAdapter (
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_menu)
                     setOnMenuItemClickListener { menuItem ->
-                        when(menuItem.itemId) {
+                        when (menuItem.itemId) {
                             R.id.remove -> {
                                 listener.onRemove(post)
                                 return@setOnMenuItemClickListener true
@@ -64,13 +61,10 @@ class PostAdapter (
                                 listener.onEdit(post)
                                 return@setOnMenuItemClickListener true
                             }
+                            else -> false
                         }
-                        false
                     }
-
-
-                    show()
-                }
+                }.show()
             }
         }
     }

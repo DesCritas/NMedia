@@ -7,52 +7,46 @@ import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
 
 val empty = Post(
-     0,
-     "",
-     "",
-     "",
-     "",
-     false,
-     0,
-     0,
-     0
+    0,
+    "",
+    "",
+    "",
+    "",
+    false,
+    0,
+    0,
+    0
 )
 
-class PostViewModel: ViewModel() {
-     private val repository: PostRepository = PostRepositoryInMemoryImpl()
-     val data = repository.getAll()
-     fun likeById(id: Long){
-          repository.likeById(id)
-     }
-     fun shareById(id: Long){
-          repository.shareById(id)
-     }
-     fun removeById(id: Long) = repository.removeById(id)
+class PostViewModel : ViewModel() {
+    private val repository: PostRepository = PostRepositoryInMemoryImpl()
+    val data = repository.getAll()
+    val edited = MutableLiveData(empty)
+
+    fun likeById(id: Long) = repository.likeById(id)
+    fun shareById(id: Long) = repository.shareById(id)
+    fun removeById(id: Long) = repository.removeById(id)
 
 
-     val edited = MutableLiveData(empty)
-     fun save(){
-          edited.value?.let{
-               repository.save(it)
-               edited.value = empty
-          }
+    fun save() {
+        edited.value?.let {
+            repository.save(it)
+        }
+        edited.value = empty
+    }
 
-     }
+    fun edit(post: Post) {
+        edited.value = post
+    }
 
-     fun edit(post:Post){
-          edited.value = post
-     }
-
-     fun editContent(content: String){
-          edited.value?.let{
-               val trimmed = content.trim()
-               if (trimmed == it.content){
-                    return
-               } else{
-                    edited.value = it.copy(content = trimmed)
-               }
-          }
-
-     }
-
+    fun editContent(content: String) {
+        edited.value?.let {
+            val trimmed = content.trim()
+            if (trimmed == it.content) {
+                return
+            } else {
+                edited.value = it.copy(content = trimmed)
+            }
+        }
+    }
 }
