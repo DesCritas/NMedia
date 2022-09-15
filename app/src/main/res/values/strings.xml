@@ -11,4 +11,6 @@
     <string name="sharedCounter">1000</string>
     <string name="viewsCounter">1000</string>
     <string name="viewsIcon">ViewsIcon</string>
+    <string name="post_menu_remove">Remove</string>
+    <string name="edit">Edit</string>
 </resources>
