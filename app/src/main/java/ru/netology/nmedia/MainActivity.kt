@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
                 return@observe
             } else {
                 binding.groupEditMessage.visibility = View.VISIBLE
+                binding.editingMessage.text = post.content
                 binding.contentEdit.setText(post.content)
                 binding.contentEdit.requestFocus()
             }
