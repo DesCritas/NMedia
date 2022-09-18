@@ -2,6 +2,7 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import ru.netology.nmedia.adapter.PostAdapter
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
                     viewModel.likeById(post.id)
                 }
 
+                override fun onCancelEdit(post: Post) {
+                    viewModel.cancelEdit()
+                }
+
             }
         )
 
@@ -45,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             if (post.id == 0L) {
                 return@observe
             } else {
+                binding.groupEditMessage.visibility = View.VISIBLE
                 binding.contentEdit.setText(post.content)
                 binding.contentEdit.requestFocus()
             }
@@ -68,11 +74,19 @@ class MainActivity : AppCompatActivity() {
                 val text = binding.contentEdit.text.toString()
                 viewModel.editContent(text)
                 viewModel.save()
+                binding.groupEditMessage.visibility = View.GONE
                 binding.contentEdit.setText("")
                 binding.contentEdit.clearFocus()
                 AndroidUtils.hideKeyboard(binding.contentEdit)
 
             }
+        }
+        binding.editingCancel.setOnClickListener {
+            viewModel.cancelEdit()
+            binding.groupEditMessage.visibility = View.GONE
+            binding.contentEdit.setText("")
+            binding.contentEdit.clearFocus()
+            AndroidUtils.hideKeyboard(binding.contentEdit)
         }
 
 

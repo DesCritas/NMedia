@@ -15,6 +15,7 @@ interface PostEventListener {
     fun onShare(post: Post)
     fun onRemove(post: Post)
     fun onLike(post: Post)
+    fun onCancelEdit(post: Post)
 }
 
 
