@@ -56,12 +56,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.container.adapter = adapter
-        viewModel.data.observe(this) { posts ->
-            adapter.submitList(posts)
-
-        }
-
         binding.save.setOnClickListener {
             if (binding.contentEdit.text.isNullOrBlank()) {
                 Toast.makeText(
@@ -87,6 +81,12 @@ class MainActivity : AppCompatActivity() {
             binding.contentEdit.setText("")
             binding.contentEdit.clearFocus()
             AndroidUtils.hideKeyboard(binding.contentEdit)
+        }
+
+        binding.container.adapter = adapter
+        viewModel.data.observe(this) { posts ->
+            adapter.submitList(posts)
+
         }
 
 
