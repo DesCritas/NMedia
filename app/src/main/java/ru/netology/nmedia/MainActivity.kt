@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         )
-
         viewModel.edited.observe(this) { post ->
             if (post.id == 0L) {
                 return@observe
@@ -56,7 +55,6 @@ class MainActivity : AppCompatActivity() {
                 binding.contentEdit.requestFocus()
             }
         }
-
         binding.save.setOnClickListener {
             if (binding.contentEdit.text.isNullOrBlank()) {
                 Toast.makeText(
