@@ -11,4 +11,11 @@
     <string name="sharedCounter">1000</string>
     <string name="viewsCounter">1000</string>
     <string name="viewsIcon">ViewsIcon</string>
+    <string name="post_menu_remove">Remove</string>
+    <string name="edit">Edit</string>
+    <string name="editable_message">Editable message</string>
+    <string name="cancel_of_editing_button">cancel_of_editing_button</string>
+    <string name="send_message_button">send_message_button</string>
+    <string name="post_text">Post text</string>
+    <string name="edit_message">Edit message</string>
 </resources>

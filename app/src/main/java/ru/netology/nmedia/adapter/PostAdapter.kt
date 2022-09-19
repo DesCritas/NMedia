@@ -2,18 +2,26 @@ package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostCardBinding
-import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.services.PostDiffUtil
+import ru.netology.nmedia.dto.Post as Post
+
+interface PostEventListener {
+    fun onEdit(post: Post)
+    fun onShare(post: Post)
+    fun onRemove(post: Post)
+    fun onLike(post: Post)
+    fun onCancelEdit(post: Post)
+}
 
 
-class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffUtil()) {
-
-    var onLikeListener: ((Post) -> Unit)? = null
-    var onShareListener: ((Post) -> Unit)? = null
+class PostAdapter(
+    private val listener: PostEventListener
+) : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffUtil()) {
 
     inner class PostViewHolder(
         private val binding: PostCardBinding,
@@ -36,10 +44,28 @@ class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffUtil()
                 if (post.likedByMe) R.drawable.ic_liked else R.drawable.ic_like
             )
             likesButton.setOnClickListener {
-                onLikeListener?.invoke(post)
+                listener.onLike(post)
             }
             sharesButton.setOnClickListener {
-                onShareListener?.invoke(post)
+                listener.onShare(post)
+            }
+            dottedMenu.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.post_menu)
+                    setOnMenuItemClickListener { menuItem ->
+                        when (menuItem.itemId) {
+                            R.id.remove -> {
+                                listener.onRemove(post)
+                                return@setOnMenuItemClickListener true
+                            }
+                            R.id.post_menu_edit -> {
+                                listener.onEdit(post)
+                                return@setOnMenuItemClickListener true
+                            }
+                            else -> false
+                        }
+                    }
+                }.show()
             }
         }
     }
