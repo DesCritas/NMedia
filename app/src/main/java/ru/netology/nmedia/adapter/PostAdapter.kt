@@ -37,7 +37,7 @@ class PostAdapter(
             author.text = post.author
             published.text = post.published
             postText.text = post.content
-            likesCount.text = counterToText(post.likesCount)
+            likesButton.text = counterToText(post.likesCount)
             sharesCount.text = counterToText(post.sharesCount)
             viewedCount.text = counterToText(post.viewsCount)
             likesButton.isChecked = post.likedByMe

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.AppTheme.LikeCheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
-        <item name="buttonTint">@color/like_checkbox_tint</item>
-        <item name="android:layout_marginTop">@dimen/pad16dp</item>
+    <style name="Widget.AppTheme.LikeCheckBox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/like_checkbox_tint</item>
+        <item name="backgroundColor">#00000000</item>
+        <item name="minHeight">@dimen/icon_button_min_size</item>
+        <item name="minWidth">@dimen/icon_button_min_size</item>
     </style>
 </resources>

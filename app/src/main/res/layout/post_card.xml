@@ -66,26 +66,20 @@
         app:layout_constraintTop_toTopOf="@id/barrier2"
         tools:text="@sample/posts.json/data/content" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/likesButton"
         style="@style/Widget.AppTheme.LikeCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:button="@drawable/ic_like_24dp"
+        android:checkable="true"
+        app:icon="@drawable/ic_like_24dp"
+        
+        android:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/likesIcon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/postText" />
 
-    <TextView
-        android:id="@+id/likesCount"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/likesCounter"
-        app:layout_constraintBottom_toBottomOf="@+id/likesButton"
-        app:layout_constraintStart_toEndOf="@+id/likesButton"
-        app:layout_constraintTop_toTopOf="@+id/likesButton" />
+
 
     <ImageView
         android:id="@+id/viewedIcon"
@@ -117,9 +111,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/pad16dp"
         android:contentDescription="@string/shareIcon"
-        app:layout_constraintBottom_toBottomOf="@+id/likesCount"
-        app:layout_constraintStart_toEndOf="@+id/likesCount"
-        app:layout_constraintTop_toTopOf="@+id/likesCount"
+        app:layout_constraintBottom_toBottomOf="@+id/likesButton"
+        app:layout_constraintStart_toEndOf="@+id/likesButton"
+        app:layout_constraintTop_toTopOf="@+id/likesButton"
         app:srcCompat="@drawable/ic_baseline_share_24" />
 
     <TextView
@@ -147,6 +141,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/pad16dp"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="likesButton,likesCount,sharesButton,sharesCount,viewedIcon" />
+        app:constraint_referenced_ids="likesButton,sharesButton,sharesCount,viewedIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
