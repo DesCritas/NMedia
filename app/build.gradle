@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "ru.netology.nmedia"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -35,10 +35,10 @@ android {
 
 dependencies {
 
-    def lifecycle_version = "2.6.0-alpha01"
+    def lifecycle_version = "2.6.0-alpha02"
     def arch_version = "2.1.0"
-    def core_version = "1.8.0"
-    def appcompat_version = "1.5.0"
+    def core_version = "1.9.0"
+    def appcompat_version = "1.5.1"
     def mdc_version = "1.6.1"
     def constraintlayout_version = "2.1.4"
     def recyclerview_version = "1.2.1"
