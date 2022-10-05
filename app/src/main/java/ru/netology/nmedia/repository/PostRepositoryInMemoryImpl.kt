@@ -4,6 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.dto.Post
 
+const val incrOrDecrByOne = 1
+const val newPostId = 0L
+const val defaultAuthorName = "Me"
+const val defaultPublished = "now"
+
 class PostRepositoryInMemoryImpl : PostRepository {
     private var nextId = 1L
     private var posts = listOf(
@@ -108,7 +113,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
         posts = posts.map {
             if (it.id != id) it else it.copy(
                 likedByMe = !it.likedByMe,
-                likesCount = if (!it.likedByMe) it.likesCount + 1 else it.likesCount - 1
+                likesCount = if (!it.likedByMe) it.likesCount + incrOrDecrByOne else it.likesCount - incrOrDecrByOne
             )
         }
         data.value = posts
@@ -116,7 +121,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
 
     override fun shareById(id: Long) {
         posts = posts.map {
-            if (it.id != id) it else it.copy(sharesCount = it.sharesCount + 1)
+            if (it.id != id) it else it.copy(sharesCount = it.sharesCount + incrOrDecrByOne)
         }
         data.value = posts
     }
@@ -127,19 +132,19 @@ class PostRepositoryInMemoryImpl : PostRepository {
     }
 
     override fun save(post: Post) {
-        if (post.id == 0L){
+        if (post.id == newPostId) {
             posts = listOf(
                 post.copy(
                     id = nextId++,
-                    author = "Me",
-                    published = "now",
+                    author = defaultAuthorName,
+                    published = defaultPublished,
                     likedByMe = false
                 )
             ) + posts
             data.value = posts
             return
         }
-        posts = posts.map{
+        posts = posts.map {
             if (it.id != post.id) it else it.copy(content = post.content)
         }
         data.value = posts

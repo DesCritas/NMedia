@@ -7,15 +7,7 @@ import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemoryImpl
 
 val empty = Post(
-    0,
-    "",
-    "",
-    "",
-    "",
-    false,
-    0,
-    0,
-    0
+    0, "", "", "", "", false, 0, 0, 0
 )
 
 class PostViewModel : ViewModel() {
@@ -38,6 +30,7 @@ class PostViewModel : ViewModel() {
     fun edit(post: Post) {
         edited.value = post
     }
+
     fun cancelEdit(): Post? {
         return edited.value
     }
