@@ -101,5 +101,16 @@
         app:layout_constraintTop_toTopOf="@id/editing_hint"
         app:srcCompat="@drawable/ic_baseline_cancel_24" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/new_post_button"
+        style="@style/Widget.AppTheme.NewPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/new_post_button"
+        app:icon="@drawable/ic_baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@id/barrier_top_of_edit"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
