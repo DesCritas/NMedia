@@ -1,9 +1,12 @@
 package ru.netology.nmedia.dto
 
+const val defaultPostId = 0L
+const val emptyString = ""
+
 data class Post(
-    val id: Long = 0,
+    val id: Long = defaultPostId,
     val author: String,
-    val authorAvatar: String = "",
+    val authorAvatar: String = emptyString,
     val published: String,
     val content: String,
     val likedByMe: Boolean,

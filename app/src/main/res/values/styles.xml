@@ -3,26 +3,26 @@
 
     <style name="Widget.AppTheme.LikeCheckBox" parent="Widget.MaterialComponents.Button.TextButton.Icon">
         <item name="iconTint">@color/like_checkbox_tint</item>
-        <item name="backgroundColor">#00000000</item>
+        <item name="backgroundColor">@color/transparent</item>
         <item name="minHeight">@dimen/icon_button_min_size</item>
         <item name="minWidth">@dimen/icon_button_min_size</item>
-        <item name="rippleColor">#00000000</item>
+        <item name="rippleColor">@color/transparent</item>
     </style>
 
     <style name="Widget.AppTheme.ShareButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-        <item name="iconTint">@color/like_checkbox_tint</item>
-        <item name="backgroundColor">#00000000</item>
+        <item name="iconTint">@color/default_grey</item>
+        <item name="backgroundColor">@color/transparent</item>
         <item name="minHeight">@dimen/icon_button_min_size</item>
         <item name="minWidth">@dimen/icon_button_min_size</item>
-        <item name="rippleColor">#00000000</item>
+        <item name="rippleColor">@color/transparent</item>
     </style>
 
     <style name="Widget.AppTheme.DottedMenu" parent="Widget.MaterialComponents.Button.TextButton.Icon">
-
-        <item name="backgroundColor">#00000000</item>
+        <item name="iconTint">@color/default_grey</item>
+        <item name="backgroundColor">@color/transparent</item>
         <item name="minHeight">@dimen/icon_button_min_size</item>
         <item name="minWidth">@dimen/icon_button_min_size</item>
-        <item name="rippleColor">#00000000</item>
+        <item name="rippleColor">@color/transparent</item>
     </style>
 
 </resources>

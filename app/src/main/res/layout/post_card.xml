@@ -23,7 +23,8 @@
         android:layout_marginStart="@dimen/pad16dp"
         android:ellipsize="end"
         android:lines="1"
-        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_header"
         app:layout_constraintBottom_toTopOf="@+id/published"
         app:layout_constraintEnd_toStartOf="@id/dottedMenu"
         app:layout_constraintStart_toEndOf="@id/avatar"
@@ -36,7 +37,8 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="1"
-        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_underHeader"
         app:layout_constraintBottom_toBottomOf="@id/avatar"
         app:layout_constraintEnd_toStartOf="@id/dottedMenu"
         app:layout_constraintStart_toEndOf="@id/avatar"
@@ -47,14 +49,13 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dottedMenu"
         style="@style/Widget.AppTheme.DottedMenu"
-        app:iconGravity="top"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/avatarSize"
+        android:layout_height="@dimen/avatarSize"
         android:contentDescription="@string/dottedmenue"
         app:icon="@drawable/ic_baseline_more_vert_24"
+        app:iconGravity="top"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -63,7 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/pad16dp"
         android:autoLink="web"
-        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_postText"
         app:layout_constraintTop_toTopOf="@id/barrier2"
         tools:text="@sample/posts.json/data/content" />
 
@@ -74,8 +76,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/transparent"
         android:checkable="true"
-        android:text="@string/sharedCounter"
         android:contentDescription="@string/likesIcon"
+        android:text="@string/sharedCounter"
         android:textColor="@color/black"
         app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,32 +94,22 @@
         app:icon="@drawable/ic_baseline_share_24"
         app:layout_constraintBottom_toBottomOf="@+id/likesButton"
         app:layout_constraintStart_toEndOf="@+id/likesButton"
-        app:layout_constraintTop_toTopOf="@+id/likesButton"
-        />
+        app:layout_constraintTop_toTopOf="@+id/likesButton" />
 
-    <TextView
-        android:id="@+id/viewedCount"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:gravity="center_vertical"
-        android:text="@string/sharedCounter"
-        app:layout_constraintBottom_toBottomOf="@+id/viewedIcon"
 
-        app:layout_constraintStart_toEndOf="@+id/viewedIcon"
-        app:layout_constraintTop_toTopOf="@+id/viewedIcon" />
-
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/viewedIcon"
+        style="@style/Widget.AppTheme.ShareButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
         android:contentDescription="@string/viewsIcon"
+        android:enabled="false"
+        android:text="@string/sharedCounter"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_baseline_remove_red_eye_24"
         app:layout_constraintBottom_toBottomOf="@+id/sharesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sharesButton"
-        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
-         />
+        app:layout_constraintTop_toTopOf="@+id/sharesButton" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"

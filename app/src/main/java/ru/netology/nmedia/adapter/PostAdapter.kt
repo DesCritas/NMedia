@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostCardBinding
+import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.services.PostDiffUtil
-import ru.netology.nmedia.dto.Post as Post
 
 interface PostEventListener {
     fun onEdit(post: Post)
@@ -17,7 +17,6 @@ interface PostEventListener {
     fun onLike(post: Post)
     fun onCancelEdit(post: Post)
 }
-
 
 class PostAdapter(
     private val listener: PostEventListener
@@ -39,7 +38,7 @@ class PostAdapter(
             postText.text = post.content
             likesButton.text = counterToText(post.likesCount)
             sharesButton.text = counterToText(post.sharesCount)
-            viewedCount.text = counterToText(post.viewsCount)
+            viewedIcon.text = counterToText(post.viewsCount)
             likesButton.isChecked = post.likedByMe
             likesButton.setOnClickListener {
                 listener.onLike(post)
@@ -68,8 +67,8 @@ class PostAdapter(
         }
     }
 
-
     private fun counterToText(count: Long): String {
+        //вынести функцию в отдельный класс, цифры и текст запихнуть в константы.
         val result: String
         val resultDouble: Double
         if (count < 0) {
