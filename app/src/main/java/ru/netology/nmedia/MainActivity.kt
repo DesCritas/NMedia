@@ -12,6 +12,7 @@ import ru.netology.nmedia.viewmodel.PostViewModel
 
 const val blankPost = "Post is blank"
 
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +26,19 @@ class MainActivity : AppCompatActivity() {
             text ?: return@registerForActivityResult
             viewModel.editContent(text)
             viewModel.save()
+        }
 
+        val editPostLauncher = registerForActivityResult(EditPostResultContract()) { text ->
+            text ?: return@registerForActivityResult
+            viewModel.editContent(text)
+            viewModel.save()
         }
 
 
         val adapter = PostAdapter(object : PostEventListener {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
+                editPostLauncher.launch(post)
             }
 
             override fun onShare(post: Post) {
