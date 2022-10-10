@@ -57,6 +57,10 @@ class MainActivity : AppCompatActivity() {
                 viewModel.cancelEdit()
             }
 
+            override fun onVideo(post: Post) {
+                viewModel.playVideoBy(post)
+            }
+
         })
         //viewModel.edited.observe(this) { post ->
         //    if (post.id == newPostId) {

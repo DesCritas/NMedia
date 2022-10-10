@@ -81,7 +81,7 @@
         android:textColor="@color/black"
         app:icon="@drawable/ic_like_24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/postText" />
+        app:layout_constraintTop_toBottomOf="@id/video_banner" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/sharesButton"
@@ -124,6 +124,39 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/pad16dp"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="likesButton,sharesButton,viewedIcon" />
+        app:constraint_referenced_ids="likesButton,sharesButton,viewedIcon"
+        app:layout_constraintTop_toBottomOf="@id/video_banner" />
+
+    <ImageView
+        android:id="@+id/video_banner"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/restricted_banner"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/postText"
+        android:contentDescription="@string/video_preview" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/play_video_button"
+        style="@style/Widget.AppTheme.NewPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/video_banner"
+        app:layout_constraintBottom_toBottomOf="@id/video_banner"
+        app:layout_constraintStart_toStartOf="@id/video_banner"
+        android:contentDescription="Play Video Button"
+        app:icon="@drawable/ic_baseline_play_circle_filled_24"
+        app:layout_constraintEnd_toEndOf="@id/video_banner"
+        />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/video_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="video_banner, play_video_button"
+        android:visibility="gone"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

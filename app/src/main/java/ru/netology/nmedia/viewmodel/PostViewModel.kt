@@ -45,4 +45,7 @@ class PostViewModel : ViewModel() {
             }
         }
     }
+    fun playVideoBy(post: Post){
+        //TODO
+    }
 }
