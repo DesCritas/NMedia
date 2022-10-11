@@ -42,12 +42,15 @@ class PostAdapter(
             sharesButton.text = counterToText(post.sharesCount)
             viewedIcon.text = counterToText(post.viewsCount)
             likesButton.isChecked = post.likedByMe
-            if(post.video == null){
+            if (post.video == null) {
                 this.videoGroup.visibility = View.GONE
             } else {
                 this.videoGroup.visibility = View.VISIBLE
             }
-            videoGroup.setOnClickListener{
+            playVideoButton.setOnClickListener {
+                listener.onVideo(post)
+            }
+            videoBanner.setOnClickListener {
                 listener.onVideo(post)
             }
             likesButton.setOnClickListener {

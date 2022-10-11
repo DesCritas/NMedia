@@ -1,5 +1,7 @@
 package ru.netology.nmedia
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.launch
 import androidx.activity.viewModels
@@ -11,7 +13,6 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 const val blankPost = "Post is blank"
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +44,13 @@ class MainActivity : AppCompatActivity() {
 
             override fun onShare(post: Post) {
                 viewModel.shareById(post.id)
+
+                val intent =
+                    Intent().putExtra(Intent.EXTRA_TEXT, post.content).setAction(Intent.ACTION_SEND)
+                        .setType("text/plain")
+                val createChooser = Intent.createChooser(intent, "Choose app")
+                startActivity(createChooser)
+
             }
 
             override fun onRemove(post: Post) {
@@ -58,7 +66,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onVideo(post: Post) {
-                viewModel.playVideoBy(post)
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                val createChooser = Intent.createChooser(intent, "Choose app")
+                startActivity(createChooser)
+
             }
 
         })

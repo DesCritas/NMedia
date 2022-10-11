@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/barrier_top_of_edit_message"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,87 +19,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/post_card" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier_top_of_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="save, content_edit" />
 
-    <EditText
-        android:id="@+id/content_edit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:hint="@string/post_text"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/pad08dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/send_message_button"
-        android:padding="@dimen/pad08dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/content_edit"
-        app:srcCompat="@drawable/ic_baseline_send_24" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_edit_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:constraint_referenced_ids="editing_hint,editing_message,editing_cancel" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier_top_of_edit_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="editing_hint, editing_cancel,barrier_top_of_edit" />
-
-    <TextView
-        android:id="@+id/editing_hint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:padding="@dimen/pad04dp"
-        android:text="@string/edit_message"
-        app:layout_constraintBottom_toTopOf="@id/editing_message"
-        app:layout_constraintEnd_toStartOf="@id/editing_cancel"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/editing_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:padding="@dimen/pad04dp"
-        android:text="@string/editable_message"
-        app:layout_constraintBottom_toTopOf="@id/barrier_top_of_edit"
-        app:layout_constraintEnd_toStartOf="@id/editing_cancel"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/editing_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cancel_of_editing_button"
-        android:padding="@dimen/pad08dp"
-        app:layout_constraintBottom_toTopOf="@id/barrier_top_of_edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editing_hint"
-        app:srcCompat="@drawable/ic_baseline_cancel_24" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/new_post_button"
@@ -108,9 +28,9 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/new_post_button"
         app:icon="@drawable/ic_baseline_add_circle_24"
-        app:layout_constraintBottom_toBottomOf="@id/barrier_top_of_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="@dimen/pad16dp"
 
         />
 
