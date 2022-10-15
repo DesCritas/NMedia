@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="video_banner, play_video_button"
-        android:visibility="visible"
+        android:visibility="gone"
         />
 
 
