@@ -25,4 +25,20 @@
         <item name="rippleColor">@color/transparent</item>
     </style>
 
+    <style name="Widget.AppTheme.NewPostButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/teal_700</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="minHeight">@dimen/avatarSize</item>
+        <item name="minWidth">@dimen/avatarSize</item>
+        <item name="rippleColor">@color/transparent</item>
+    </style>
+
+    <style name="Widget.AppTheme.DoneButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/teal_700</item>
+        <item name="backgroundColor">@color/transparent</item>
+        <item name="minHeight">@dimen/avatarSize</item>
+        <item name="minWidth">@dimen/avatarSize</item>
+        <item name="rippleColor">@color/transparent</item>
+    </style>
+
 </resources>

@@ -1,6 +1,7 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.ListAdapter
@@ -16,6 +17,7 @@ interface PostEventListener {
     fun onRemove(post: Post)
     fun onLike(post: Post)
     fun onCancelEdit(post: Post)
+    fun onVideo(post: Post)
 }
 
 class PostAdapter(
@@ -40,6 +42,17 @@ class PostAdapter(
             sharesButton.text = counterToText(post.sharesCount)
             viewedIcon.text = counterToText(post.viewsCount)
             likesButton.isChecked = post.likedByMe
+            if (post.video == null) {
+                this.videoGroup.visibility = View.GONE
+            } else {
+                this.videoGroup.visibility = View.VISIBLE
+            }
+            playVideoButton.setOnClickListener {
+                listener.onVideo(post)
+            }
+            videoBanner.setOnClickListener {
+                listener.onVideo(post)
+            }
             likesButton.setOnClickListener {
                 listener.onLike(post)
             }

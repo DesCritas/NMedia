@@ -18,4 +18,7 @@
     <string name="send_message_button">send_message_button</string>
     <string name="post_text">Post text</string>
     <string name="edit_message">Edit message</string>
+    <string name="new_post_button">NewPostButton</string>
+    <string name="video_preview">video_preview</string>
+    <string name="play_video_button">Play Video Button</string>
 </resources>

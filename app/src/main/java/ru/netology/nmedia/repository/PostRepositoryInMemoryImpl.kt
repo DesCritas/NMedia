@@ -100,7 +100,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             likesCount = 10,
             sharesCount = 10,
             viewsCount = 10,
-            likedByMe = false
+            likedByMe = false,
+            video = "https://youtu.be/t73eXgbKlHI"
         ),
     ).reversed()
 
