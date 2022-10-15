@@ -18,7 +18,7 @@ class PostRepositoryFileImpl(
     private val data = MutableLiveData(posts)
     private val gson = Gson()
     private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
-    
+
 
     init {
         val file = context.filesDir.resolve(filename)
