@@ -130,10 +130,10 @@
     <ImageView
         android:id="@+id/video_banner"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:scaleType="fitCenter"
         android:src="@drawable/restricted_banner"
-
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/postText"
@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="video_banner, play_video_button"
-        android:visibility="gone"
+        android:visibility="visible"
         />
 
 
