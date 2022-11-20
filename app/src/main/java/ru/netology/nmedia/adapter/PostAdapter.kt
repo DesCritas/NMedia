@@ -18,6 +18,7 @@ interface PostEventListener {
     fun onLike(post: Post)
     fun onCancelEdit(post: Post)
     fun onVideo(post: Post)
+    fun onPostClick(post: Post)
 }
 
 class PostAdapter(
