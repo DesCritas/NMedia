@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostCardBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.services.CounterToText
 import ru.netology.nmedia.services.PostDiffUtil
 
 interface PostEventListener {
@@ -39,9 +40,9 @@ class PostAdapter(
             author.text = post.author
             published.text = post.published
             postText.text = post.content
-            likesButton.text = counterToText(post.likesCount)
-            sharesButton.text = counterToText(post.sharesCount)
-            viewedIcon.text = counterToText(post.viewsCount)
+            likesButton.text = CounterToText.counterToTextFun(post.likesCount)
+            sharesButton.text = CounterToText.counterToTextFun(post.sharesCount)
+            viewedIcon.text = CounterToText.counterToTextFun(post.viewsCount)
             likesButton.isChecked = post.likedByMe
             if (post.video == null) {
                 this.videoGroup.visibility = View.GONE
@@ -50,6 +51,9 @@ class PostAdapter(
             }
             playVideoButton.setOnClickListener {
                 listener.onVideo(post)
+            }
+            root.setOnClickListener{
+                listener.onPostClick(post)
             }
             videoBanner.setOnClickListener {
                 listener.onVideo(post)
@@ -81,40 +85,40 @@ class PostAdapter(
         }
     }
 
-    private fun counterToText(count: Long): String {
-        //вынести функцию в отдельный класс, цифры и текст запихнуть в константы.
-        val result: String
-        val resultDouble: Double
-        if (count < 0) {
-            result = "ERROR"
-        } else if (count < 1000) {
-            result = count.toString()
-        } else if (count < 1_100) {
-            resultDouble = count.toDouble() / 1000
-            result = resultDouble.toString().substring(0, 1) + "K"
-        } else if (count < 10_000) {
-            resultDouble = count.toDouble() / 1000
-            result = resultDouble.toString().substring(0, 3) + "K"
-        } else if (count < 100_000) {
-            resultDouble = count.toDouble() / 1000
-            result = resultDouble.toString().substring(0, 2) + "K"
-        } else if (count < 1_000_000) {
-            result = (count.toDouble() / 1000).toString().substring(0, 3) + "K"
-        } else if (count < 1_100_000) {
-            resultDouble = count.toDouble() / 1_000_000
-            result = resultDouble.toString().substring(0, 1) + "M"
-        } else if (count < 10_000_000) {
-            resultDouble = count.toDouble() / 1_000_000
-            result = resultDouble.toString().substring(0, 3) + "M"
-        } else if (count < 100_000_000) {
-            resultDouble = count.toDouble() / 1_000_000
-            result = resultDouble.toString().substring(0, 2) + "M"
-        } else {
-            result = (count / 1_000_000).toDouble().toString().substring(0, 3) + "M"
-        }
-
-        return result
-    }
+    //private fun counterToText(count: Long): String {
+    //    //вынести функцию в отдельный класс, цифры и текст запихнуть в константы.
+    //    val result: String
+    //    val resultDouble: Double
+    //    if (count < 0) {
+    //        result = "ERROR"
+    //    } else if (count < 1000) {
+    //        result = count.toString()
+    //    } else if (count < 1_100) {
+    //        resultDouble = count.toDouble() / 1000
+    //        result = resultDouble.toString().substring(0, 1) + "K"
+    //    } else if (count < 10_000) {
+    //        resultDouble = count.toDouble() / 1000
+    //        result = resultDouble.toString().substring(0, 3) + "K"
+    //    } else if (count < 100_000) {
+    //        resultDouble = count.toDouble() / 1000
+    //        result = resultDouble.toString().substring(0, 2) + "K"
+    //    } else if (count < 1_000_000) {
+    //        result = (count.toDouble() / 1000).toString().substring(0, 3) + "K"
+    //    } else if (count < 1_100_000) {
+    //        resultDouble = count.toDouble() / 1_000_000
+    //        result = resultDouble.toString().substring(0, 1) + "M"
+    //    } else if (count < 10_000_000) {
+    //        resultDouble = count.toDouble() / 1_000_000
+    //        result = resultDouble.toString().substring(0, 3) + "M"
+    //    } else if (count < 100_000_000) {
+    //        resultDouble = count.toDouble() / 1_000_000
+    //        result = resultDouble.toString().substring(0, 2) + "M"
+    //    } else {
+    //        result = (count / 1_000_000).toDouble().toString().substring(0, 3) + "M"
+    //    }
+//
+    //    return result
+    //}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = PostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)

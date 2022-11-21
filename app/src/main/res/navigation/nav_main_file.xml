@@ -28,10 +28,23 @@
         android:id="@+id/newPostFragment"
         android:name="ru.netology.nmedia.activity.NewPostFragment"
         android:label="fragment_new_post"
-        tools:layout="@layout/fragment_new_post" />
+        tools:layout="@layout/fragment_new_post"  />
+
     <fragment
         android:id="@+id/postElementFragment"
         android:name="ru.netology.nmedia.activity.PostElementFragment"
         android:label="fragment_post_element"
-        tools:layout="@layout/fragment_post_element" />
+        tools:layout="@layout/fragment_post_element"
+        >
+        <argument
+            android:name="post"
+            app:argType="ru.netology.nmedia.dto.Post" />
+        <action
+            android:id="@+id/action_postElementFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
+    </fragment>
 </navigation>
