@@ -8,18 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
-import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.databinding.FragmentPostElementBinding
-import ru.netology.nmedia.databinding.PostCardBinding
-import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.services.CounterToText
-import ru.netology.nmedia.services.PostArg
-import ru.netology.nmedia.services.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 class PostElementFragment : Fragment() {
@@ -78,6 +72,8 @@ class PostElementFragment : Fragment() {
                         when (menuItem.itemId) {
                             R.id.remove -> {
                                 viewModel.removeById(post.id)
+                                findNavController().navigateUp()
+
                                 return@setOnMenuItemClickListener true
                             }
                             R.id.post_menu_edit -> {
