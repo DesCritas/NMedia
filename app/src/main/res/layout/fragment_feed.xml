@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.FeedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/container"
@@ -19,8 +19,6 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/post_card" />
 
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/new_post_button"
         style="@style/Widget.AppTheme.NewPostButton"
@@ -30,8 +28,6 @@
         app:icon="@drawable/ic_baseline_add_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="@dimen/pad16dp"
-
-        />
+        android:layout_marginEnd="@dimen/pad16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

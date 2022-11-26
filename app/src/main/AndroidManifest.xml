@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="ru.netology.nmedia">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -14,13 +13,16 @@
         android:theme="@style/Theme.NMedia"
         tools:targetApi="31">
         <activity
-            android:name=".NewPostActivity"
-            android:exported="false">
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
+            android:name=".activity.AppActivity"
             android:exported="true">
+            <nav-graph android:value="@navigation/nav_main_file" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
